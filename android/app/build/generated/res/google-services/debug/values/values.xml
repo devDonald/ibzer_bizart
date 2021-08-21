@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">703878149145-g1rl6eng5qoud5c2sh5iechlfe2tv45u.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">703878149145</string>
+    <string name="google_api_key" translatable="false">AIzaSyDgNxjm9Ud_k6mL6gCJTyRXkkKLWFsGpws</string>
+    <string name="google_app_id" translatable="false">1:703878149145:android:fb5d81ee1e16d1af992688</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDgNxjm9Ud_k6mL6gCJTyRXkkKLWFsGpws</string>
+    <string name="google_storage_bucket" translatable="false">ibzarvisart.appspot.com</string>
+    <string name="project_id" translatable="false">ibzarvisart</string>
+</resources>
