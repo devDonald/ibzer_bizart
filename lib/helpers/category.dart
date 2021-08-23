@@ -19,17 +19,20 @@ List<Book> books = categoriesData
 var categoriesData = [
   {
     "name": "Nursery 1 Maths",
-    'teacher': 'Mr John Audu',
-    'image': "images/banner1.jpeg"
+    'teacher': 'Mustapha S. Yakubu',
+    'image': "images/1.png",
+    "link": 'assets/nursery1maths.pdf'
   },
   {
-    "name": "The Namesake",
-    'teacher': "Sunday Abdul",
-    'image': "images/banner1.jpeg"
+    "name": "Nursery 2 Maths",
+    'teacher': "Akinjide Okanlawon",
+    'image': "images/0.png",
+    "link": 'assets/nur2maths.pdf'
   },
   {
-    "name": "State of wonder",
-    'teacher': "Martha Bulus",
-    'image': "images/banner1.jpeg"
+    "name": "Nursery 3 Maths",
+    'teacher': "Akinjide Okanlawon",
+    'image': "images/banner1.jpeg",
+    "link": 'assets/nur2maths.pdf'
   },
 ];

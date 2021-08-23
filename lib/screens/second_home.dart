@@ -3,12 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:ibzer_bizart/helpers/category.dart';
 import 'package:ibzer_bizart/helpers/constants.dart';
+import 'package:ibzer_bizart/main.dart';
 
 import 'load_pdf.dart';
 
 class SecondHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    void choiceAction(String choice) {
+      if (choice == HomeMenu.logout) {
+        authId.signOutUser().then((value) {
+          Navigator.pushNamedAndRemoveUntil(context, '/login', (r) => false);
+        });
+      }
+    }
+
     //app bar
     final appBar = AppBar(
       elevation: .5,
@@ -21,7 +30,23 @@ class SecondHome extends StatelessWidget {
         IconButton(
           icon: Icon(Icons.search),
           onPressed: () {},
-        )
+        ),
+        PopupMenuButton<String>(
+          icon: Icon(
+            Icons.more_vert,
+            color: Colors.white,
+          ),
+          tooltip: 'options',
+          onSelected: choiceAction,
+          itemBuilder: (BuildContext context) {
+            return HomeMenu.choices.map((String choice) {
+              return PopupMenuItem<String>(
+                value: choice,
+                child: Text(choice),
+              );
+            }).toList();
+          },
+        ),
       ],
     );
 
@@ -78,30 +103,36 @@ class SecondHome extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () async {
-                      if (index / 2 == 0) {
-                        PDFDocument doc = await PDFDocument.fromAsset(
-                            'assets/nursery1maths.pdf');
+                      PDFDocument doc =
+                          await PDFDocument.fromAsset(books[index].link);
 
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LoadPdf(
-                                document: doc,
-                                bookName: books[index].name,
-                              ),
-                            ));
-                      } else {}
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoadPdf(
+                              document: doc,
+                              bookName: books[index].name,
+                            ),
+                          ));
                     },
                     child: Column(children: <Widget>[
                       Container(
                         padding: EdgeInsets.all(20),
                         height: 180,
                         decoration: BoxDecoration(
+                          color: Colors.orange,
                           borderRadius: BorderRadius.circular(16),
                           image: DecorationImage(
                             image: AssetImage(books[index].image),
                             fit: BoxFit.fill,
                           ),
+                          boxShadow: [
+                            BoxShadow(
+                              offset: Offset(0.0, 1.5),
+                              blurRadius: 3.0,
+                              color: Colors.amber,
+                            ),
+                          ],
                         ),
                       ),
                       SizedBox(
@@ -127,4 +158,10 @@ class SecondHome extends StatelessWidget {
       ),
     );
   }
+}
+
+class HomeMenu {
+  static const String logout = 'Logout';
+
+  static const List<String> choices = <String>[logout];
 }
