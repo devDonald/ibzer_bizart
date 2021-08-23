@@ -135,3 +135,65 @@ abstract class BaseStyles {
     );
   }
 }
+
+Future<void> showRight(BuildContext context) async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Correct Answer'),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: const <Widget>[
+              Icon(
+                Icons.verified,
+                color: Colors.green,
+                size: 60,
+              )
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('OK'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
+
+Future<void> showWrong(BuildContext context) async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Wrong Answer'),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: const <Widget>[
+              Icon(
+                Icons.cancel,
+                color: Colors.red,
+                size: 60,
+              )
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('OK'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
